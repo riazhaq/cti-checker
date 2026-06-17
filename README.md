@@ -22,8 +22,8 @@ export CTI_AIS_API_KEY="your-token"
 Then run:
 
 ```bash
-python3 /home/runner/work/cti-checker/cti-checker/cti_checker.py --type ioc 8.8.8.8
-python3 /home/runner/work/cti-checker/cti-checker/cti_checker.py --type threat-actor "APT29"
+python3 ./cti_checker.py --type ioc 8.8.8.8
+python3 ./cti_checker.py --type threat-actor "APT29"
 ```
 
 Optional environment variables:
