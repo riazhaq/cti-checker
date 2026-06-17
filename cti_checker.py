@@ -91,7 +91,7 @@ def query_ais(config: AISConfig, query: str, query_type: str) -> dict[str, Any]:
         body = exc.read().decode("utf-8", errors="replace")
         if exc.code == 404:
             return {
-                "phase": 1,
+                "phase": 2,
                 "source": "AIS",
                 "query": query,
                 "query_type": query_type,
@@ -105,7 +105,7 @@ def query_ais(config: AISConfig, query: str, query_type: str) -> dict[str, Any]:
 
     parsed = json.loads(body) if body else {}
     return {
-        "phase": 1,
+        "phase": 2,
         "source": "AIS",
         "query": query,
         "query_type": query_type,
@@ -116,7 +116,7 @@ def query_ais(config: AISConfig, query: str, query_type: str) -> dict[str, Any]:
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Phase 1 CTI checker: query an AIS endpoint for an IOC or threat actor."
+        description="Phase 2 CTI checker: query an AIS endpoint for an IOC or threat actor."
     )
     parser.add_argument("query", help="IOC or threat actor to look up")
     parser.add_argument(
@@ -140,7 +140,7 @@ def main(argv: list[str] | None = None) -> int:
         config = load_config()
         result = query_ais(config, args.query, args.query_type)
     except (RuntimeError, ValueError, json.JSONDecodeError) as exc:
-        print(json.dumps({"phase": 1, "source": "AIS", "error": str(exc)}), file=sys.stderr)
+        print(json.dumps({"phase": 2, "source": "AIS", "error": str(exc)}), file=sys.stderr)
         return 1
 
     if not args.raw:

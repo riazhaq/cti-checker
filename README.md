@@ -1,9 +1,9 @@
 # cti-checker
 
-Phase 1 of `cti-checker` is a small Python CLI that queries a configured AIS
+Phase 2 of `cti-checker` is a small Python CLI that queries a configured AIS
 endpoint for either an IOC or a threat actor and reports a normalized verdict.
 
-## Phase 1 scope
+## Phase 2 scope
 
 - Query a single AIS-backed endpoint
 - Support IOC and threat-actor lookups
@@ -46,7 +46,7 @@ and prints a normalized JSON result like:
 
 ```json
 {
-  "phase": 1,
+  "phase": 2,
   "source": "AIS",
   "query": "8.8.8.8",
   "query_type": "ioc",
